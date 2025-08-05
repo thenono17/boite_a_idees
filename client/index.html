@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La boite à idées</title>
-    <link rel="stylesheet" href="/client/public/style.css">
+    <link rel="stylesheet" href="/client/assets/css/style.css">
     <link rel="stylesheet" href="/client/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top shadow-sm">
             <div class="container-fluid">
@@ -39,7 +42,49 @@
         </nav>
     </header>
 
-    <footer class="bg-primary-subtle fixed-bottom text-center py-3 mt-auto">
+    <div class="container my-4">
+        <div class="row align-items-center">
+            <div class="col-md-4">
+                <div class="text-center">
+                    <img width="300px" src="/client/public/icon-box.webp" alt="image d'une boite" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-md-8">
+                <h1>La boite à idées</h1>
+                <p>Chaque jour, des personnes proposent des solutions pour améliorer l'accessibilité.<br>Le problème ?
+                    Ces idées se perdent, faute d'un endroit pour les centraliser, les partager, ou les
+                    soutenir.<br>C'est pour ça que ce site existe, pour rassembler toutes ces bonnes idées au même
+                    endroit.<br><br> Ici, chacun peut proposer, soutenir, suivre et faire avancer des solutions pour un
+                    monde plus inclusif.</p>
+                <div class="bg-primary-subtle px-4 py-2 my-5 rounded">
+                    <form id="formHome">
+                        <div class="mb-3 d-flex flex-direction-row flex-wrap">
+                            <label for="FormControlTitle" class="form-label">Titre</label>
+                            <input type="text" name="title" class="form-control" id="FormControlTitle"
+                                placeholder="Titre">
+
+                            <select class="form-select mt-3" name="categorie" aria-label="Default select example"
+                                id="FormControlFiltre">
+                                <option selected>Choisir un filtre</option>
+                                <option value="batiment">Batiment</option>
+                                <option value="rue">Rue</option>
+                                <option value="site-web">Site web</option>
+                            </select>
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="FormControlTextareaDescription" class="form-label">Description</label>
+                            <textarea class="form-control" name="description" id="exampleFormControlTextareaDescription"
+                                rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-primary-subtle text-center py-3 mt-auto">
         <div class="container">
             <a class="text-body text-decoration-none fs-4 d-block" href="/client/index.html">La boite à idées</a>
             Projet Hackathon Afec 2025 - By Angelique, Martin, Nolan & Eva.
@@ -47,5 +92,6 @@
     </footer>
 </body>
 <script src="./../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./assets/js/app.js" type="module"></script>
 
 </html>
