@@ -49,7 +49,33 @@ class UsersService {
       const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
         expiresIn: "1h",
       });
+      console.log(user.id);
+
       return { token, user: { username: user.username, email: user.email } };
+    } catch (err) {
+      throw new Error(err.message);
+    }
+  }
+
+  async updateUser(currentId, { id, update }) {
+    if (!id) {
+      throw new Error("DataNotFound");
+    }
+    if (!update || Object.keys(update).length === 0) {
+      throw new Error("ArgumentRequired");
+    }
+    console.log("id:", id);
+    console.log("currentId:", currentId);
+    if (id.toString() !== currentId.toString()) {
+      throw new Error("Unauthorized");
+    }
+    try {
+      const user = await this.getUserByEmail(update.email);
+      if (user) {
+        throw new Error("DataAlreadyExist");
+      }
+      const updatedUser = await this.userRepository.updateUser({ id, update });
+      return updatedUser;
     } catch (err) {
       throw new Error(err.message);
     }

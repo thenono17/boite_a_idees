@@ -12,14 +12,43 @@ class UsersRepository {
 
   async register({ username, email, password }) {
     try {
-      const result = await this.pool.query(
+      const [result] = await this.pool.query(
         "INSERT INTO Users (username, email, password) VALUES (?, ?, ?)",
         [username, email, password]
       );
-      return { id: result[0].insertId, username, email };
+      const insertId = result.insertId;
+      const [rows] = await this.pool.query(
+        "SELECT id, username, email FROM Users WHERE id = ?",
+        [insertId]
+      );
+      console.log(rows[0]);
+
+      return rows[0];
     } catch (err) {
       console.error(err.message);
       throw new Error("Erreur lors de la création de l'utilisateur");
+    }
+  }
+
+  async updateUser({ id, update }) {
+    try {
+      const keys = Object.keys(update);
+      const values = Object.values(update);
+      const setKeys = keys.map((key) => `${key} = ?`).join(", ");
+
+      await this.pool.query(`UPDATE Users SET ${setKeys} WHERE id = ?`, [
+        ...values,
+        id,
+      ]);
+      const [rows] = await this.pool.query(
+        "SELECT id, username, email FROM Users WHERE id = ?",
+        [id]
+      );
+
+      return rows[0];
+    } catch (err) {
+      console.error(err.message);
+      throw new Error("Erreur lors de la mise à jour de l'utilisateur");
     }
   }
 }

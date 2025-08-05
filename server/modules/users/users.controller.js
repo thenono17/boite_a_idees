@@ -39,6 +39,31 @@ class UsersController {
   async authentificationUser(req, res) {
     res.status(200).json({ message: "Authentification réussi" });
   }
+
+  async logOut(req, res) {
+    res.cookie("token", "", {
+      httpOnly: true,
+      secure: false,
+      sameSite: "strict",
+      expires: new Date(0),
+    });
+    res.status(200).json({ message: "Déconnexion réussi" });
+  }
+
+  async updateUser(req, res, next) {
+    const { id } = req.params;
+    const update = req.body;
+    const currentId = req.userID;
+    try {
+      const updatedUser = await this.userServices.updateUser(currentId, {
+        id,
+        update,
+      });
+      res.status(200).json({ updatedUser });
+    } catch (err) {
+      next(err);
+    }
+  }
 }
 
 export default UsersController;

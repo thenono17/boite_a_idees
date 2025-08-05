@@ -5,6 +5,8 @@ const errorHandler = (err, req, res, next) => {
       return res.status(400).json({ message: "Donnée manquante" });
     case "IncorrectData":
       return res.status(401).json({ message: "Incorrect Data" });
+    case "Unauthorized":
+      return res.status(403).json({ message: "Accès interdit " });
     case "DataAlreadyExist":
       return res.status(409).json({ message: "Donnée déjà existante" });
     case "DataNotFound":
