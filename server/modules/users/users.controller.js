@@ -35,6 +35,10 @@ class UsersController {
       next(err);
     }
   }
+
+  async authentificationUser(req, res) {
+    res.status(200).json({ message: "Authentification réussi" });
+  }
 }
 
 export default UsersController;
