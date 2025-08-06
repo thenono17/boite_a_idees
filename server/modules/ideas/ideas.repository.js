@@ -11,7 +11,7 @@ class IdeasRepository {
       );
       const resultId = result.insertId;
       const [rows] = await this.pool.query(
-        "SELECT Users.username as Username, Ideas.id, title, descr, categorie, created_at FROM Users JOIN Ideas ON Users.id = Ideas.idUser WHERE Ideas.id = ?",
+        "SELECT Users.username as username, Ideas.id, title, descr, categorie, created_at FROM Users JOIN Ideas ON Users.id = Ideas.idUser WHERE Ideas.id = ?",
         [resultId]
       );
       return rows[0];

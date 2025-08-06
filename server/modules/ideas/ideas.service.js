@@ -3,13 +3,11 @@ class IdeasService {
     this.ideasRepository = ideasRepository;
   }
 
-  async createIdea(currentId, { idUser, title, descr, categorie }) {
-    if (!idUser || !title || !descr || !categorie) {
+  async createIdea(currentId, { title, descr, categorie }) {
+    if (!title || !descr || !categorie) {
       throw new Error("ArgumentRequired");
     }
-    if (idUser.toString() !== currentId.toString()) {
-      throw new Error("Unauthorized");
-    }
+    const idUser = currentId;
     try {
       if (
         categorie !== "mobilité" &&
@@ -25,6 +23,8 @@ class IdeasService {
         categorie,
       });
     } catch (err) {
+      console.log(err);
+
       throw new Error(err.message);
     }
   }

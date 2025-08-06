@@ -4,17 +4,18 @@ class IdeasController {
   }
 
   async createIdea(req, res, next) {
-    const { idUser, title, descr, categorie } = req.body;
+    const { title, descr, categorie } = req.body;
     try {
       const currentId = req.userID;
       const newIdeas = await this.ideasService.createIdea(currentId, {
-        idUser,
         title,
         descr,
         categorie,
       });
       res.status(201).json({ idea: newIdeas });
     } catch (err) {
+      console.log(err);
+
       next(err);
     }
   }
