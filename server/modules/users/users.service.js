@@ -49,8 +49,6 @@ class UsersService {
       const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
         expiresIn: "1h",
       });
-      console.log(user.id);
-
       return { token, user: { username: user.username, email: user.email } };
     } catch (err) {
       throw new Error(err.message);
@@ -64,8 +62,6 @@ class UsersService {
     if (!update || Object.keys(update).length === 0) {
       throw new Error("ArgumentRequired");
     }
-    console.log("id:", id);
-    console.log("currentId:", currentId);
     if (id.toString() !== currentId.toString()) {
       throw new Error("Unauthorized");
     }
