@@ -55,7 +55,7 @@ class UsersController {
     const update = req.body;
     const currentId = req.userID;
     try {
-      const updatedUser = await this.userServices.updateUser(currentId, {
+      const updatedUser = await this.userServices.updateUserById(currentId, {
         id,
         update,
       });

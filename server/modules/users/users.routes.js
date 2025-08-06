@@ -14,7 +14,7 @@ const usersRoutes = (usersController) => {
   );
   router.post("/logout", (req, res) => usersController.logOut(req, res));
   router.put("/update/:id", authentification, (req, res, next) =>
-    usersController.updateUser(req, res, next)
+    usersController.updateUserById(req, res, next)
   );
   return router;
 };

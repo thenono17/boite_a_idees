@@ -28,7 +28,7 @@ class UsersRepository {
     }
   }
 
-  async updateUser({ id, update }) {
+  async updateUserById({ id, update }) {
     try {
       const keys = Object.keys(update);
       const values = Object.values(update);

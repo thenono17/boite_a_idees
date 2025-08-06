@@ -55,7 +55,7 @@ class UsersService {
     }
   }
 
-  async updateUser(currentId, { id, update }) {
+  async updateUserById(currentId, { id, update }) {
     if (!id) {
       throw new Error("DataNotFound");
     }
@@ -70,7 +70,10 @@ class UsersService {
       if (user) {
         throw new Error("DataAlreadyExist");
       }
-      const updatedUser = await this.userRepository.updateUser({ id, update });
+      const updatedUser = await this.userRepository.updateUserById({
+        id,
+        update,
+      });
       return updatedUser;
     } catch (err) {
       throw new Error(err.message);
