@@ -55,20 +55,18 @@ class UsersService {
     }
   }
 
-  async updateUserById(currentId, { id, update }) {
-    if (!id) {
-      throw new Error("DataNotFound");
-    }
+  async updateUserById(currentId, update) {
     if (!update || Object.keys(update).length === 0) {
       throw new Error("ArgumentRequired");
     }
-    if (id.toString() !== currentId.toString()) {
-      throw new Error("Unauthorized");
-    }
+    const id = currentId;
     try {
       const user = await this.getUserByEmail(update.email);
       if (user) {
         throw new Error("DataAlreadyExist");
+      }
+      if (update.password) {
+        update.password = await bcrypt.hash(update.password, saltRounds);
       }
       const updatedUser = await this.userRepository.updateUserById({
         id,

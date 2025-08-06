@@ -52,14 +52,13 @@ class IdeasController {
   }
 
   async updateIdeaById(req, res, next) {
-    const { id } = req.params;
     const update = req.body;
     const currentId = req.userID;
     try {
-      const updatedIdea = await this.ideasService.updateIdeaById(currentId, {
-        id,
-        update,
-      });
+      const updatedIdea = await this.ideasService.updateIdeaById(
+        currentId,
+        update
+      );
       res.status(200).json({ updatedIdea });
     } catch (err) {
       next(err);
