@@ -21,8 +21,6 @@ class UsersRepository {
         "SELECT id, username, email FROM Users WHERE id = ?",
         [insertId]
       );
-      console.log(rows[0]);
-
       return rows[0];
     } catch (err) {
       console.error(err.message);
@@ -30,7 +28,7 @@ class UsersRepository {
     }
   }
 
-  async updateUser({ id, update }) {
+  async updateUserById({ id, update }) {
     try {
       const keys = Object.keys(update);
       const values = Object.values(update);
@@ -44,7 +42,6 @@ class UsersRepository {
         "SELECT id, username, email FROM Users WHERE id = ?",
         [id]
       );
-
       return rows[0];
     } catch (err) {
       console.error(err.message);
