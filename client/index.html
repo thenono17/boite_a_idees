@@ -57,12 +57,11 @@
                     endroit.<br><br> Ici, chacun peut proposer, soutenir, suivre et faire avancer des solutions pour un
                     monde plus inclusif.</p>
                 <div class="bg-primary-subtle px-4 py-2 my-5 rounded">
-                    <form id="formHome">
+                    <form id="FormHome">
                         <div class="mb-3 d-flex flex-direction-row flex-wrap">
                             <label for="FormControlTitle" class="form-label">Titre</label>
                             <input type="text" name="title" class="form-control" id="FormControlTitle"
                                 placeholder="Titre">
-
                             <select class="form-select mt-3" name="categorie" aria-label="Default select example"
                                 id="FormControlFiltre">
                                 <option selected>Choisir un filtre</option>
@@ -70,14 +69,15 @@
                                 <option value="rue">Rue</option>
                                 <option value="site-web">Site web</option>
                             </select>
-
                         </div>
                         <div class="mb-3">
                             <label for="FormControlTextareaDescription" class="form-label">Description</label>
-                            <textarea class="form-control" name="description" id="exampleFormControlTextareaDescription"
+                            <textarea class="form-control" name="description" id="FormControlTextareaDescription"
                                 rows="3"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary">Publier</button>
+                        </div>
                     </form>
                 </div>
             </div>
