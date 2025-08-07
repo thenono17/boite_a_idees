@@ -50,15 +50,14 @@ class UsersController {
     res.status(200).json({ message: "Déconnexion réussi" });
   }
 
-  async updateUser(req, res, next) {
-    const { id } = req.params;
+  async updateUserById(req, res, next) {
     const update = req.body;
     const currentId = req.userID;
     try {
-      const updatedUser = await this.userServices.updateUserById(currentId, {
-        id,
-        update,
-      });
+      const updatedUser = await this.userServices.updateUserById(
+        currentId,
+        update
+      );
       res.status(200).json({ updatedUser });
     } catch (err) {
       next(err);
