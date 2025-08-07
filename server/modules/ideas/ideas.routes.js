@@ -1,7 +1,9 @@
 import express from "express";
 import authentification from "../../middleware/authentification.js";
+import commentsRoutes from "../comments/comments.routes.js";
+import likesRoutes from "../likes/likes.routes.js";
 
-const ideasRoutes = (ideasController) => {
+const ideasRoutes = (ideasController, commentsController, likesController) => {
   const router = express.Router();
   router.post("/", authentification, (req, res, next) =>
     ideasController.createIdea(req, res, next)
@@ -18,6 +20,24 @@ const ideasRoutes = (ideasController) => {
   );
   router.delete("/delete/:id", authentification, (req, res, next) =>
     ideasController.deleteIdeaById(req, res, next)
+  );
+
+  router.use(
+    "/:idIdea/comments",
+    (req, res, next) => {
+      req.idIdea = req.params.idIdea;
+      next();
+    },
+    commentsRoutes(commentsController)
+  );
+
+  router.use(
+    "/:idIdea/likes",
+    (req, res, next) => {
+      req.idIdea = req.params.idIdea;
+      next();
+    },
+    likesRoutes(likesController)
   );
   return router;
 };

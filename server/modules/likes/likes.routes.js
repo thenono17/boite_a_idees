@@ -9,10 +9,10 @@ const likesRoutes = (likesController) => {
   router.delete("/", authentification, (req, res, next) =>
     likesController.unLike(req, res, next)
   );
-  router.get("/:idIdea/count", (req, res, next) =>
+  router.get("/count", (req, res, next) =>
     likesController.countLikesByIdea(req, res, next)
   );
-  router.get("/:idIdea", (req, res, next) =>
+  router.get("/", (req, res, next) =>
     likesController.getLikesByIdea(req, res, next)
   );
 

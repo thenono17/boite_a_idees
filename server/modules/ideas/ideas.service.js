@@ -4,18 +4,18 @@ class IdeasService {
   }
 
   async createIdea(currentId, { title, descr, categorie }) {
-    if (!title || !descr || !categorie) {
+    if (!title || !descr || !categorie || currentId) {
       throw new Error("ArgumentRequired");
+    }
+    if (
+      categorie !== "mobilité" &&
+      categorie !== "visuel" &&
+      categorie !== "web"
+    ) {
+      throw new Error("IncorrectData");
     }
     const idUser = currentId;
     try {
-      if (
-        categorie !== "mobilité" &&
-        categorie !== "visuel" &&
-        categorie !== "web"
-      ) {
-        throw new Error("IncorrectData");
-      }
       return await this.ideasRepository.createIdea({
         idUser,
         title,
@@ -60,10 +60,7 @@ class IdeasService {
   }
 
   async updateIdeaById(currentId, { id, update }) {
-    if (!id) {
-      throw new Error("DataNotFound");
-    }
-    if (!update || Object.keys(update).length === 0) {
+    if (!update || Object.keys(update).length === 0 || !id) {
       throw new Error("ArgumentRequired");
     }
     try {
