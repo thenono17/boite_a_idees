@@ -1,5 +1,3 @@
-const ideasContainer = document.getElementById("IdeasContainer");
-
 try {
   const res = await fetch("http://localhost:3000/ideas", {
     method: "GET",
