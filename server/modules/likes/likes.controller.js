@@ -3,7 +3,7 @@ class LikesController {
     this.likesService = likesService;
   }
   async addLike(req, res, next) {
-    const { idIdea } = req.body;
+    const idIdea = req.idIdea;
     const idUser = req.userID;
     try {
       const result = await this.likesService.addLike({ idUser, idIdea });
@@ -14,7 +14,7 @@ class LikesController {
   }
 
   async unLike(req, res, next) {
-    const { idIdea } = req.body;
+    const idIdea = req.idIdea;
     const idUser = req.userID;
     try {
       console.log(idIdea);
@@ -29,7 +29,7 @@ class LikesController {
   }
 
   async countLikesByIdea(req, res, next) {
-    const { idIdea } = req.params;
+    const idIdea = req.idIdea;
     try {
       const count = await this.likesService.countLikesByIdea(idIdea);
       res.status(200).json(count);
@@ -39,7 +39,7 @@ class LikesController {
   }
 
   async getLikesByIdea(req, res, next) {
-    const { idIdea } = req.params;
+    const idIdea = req.idIdea;
     try {
       const likes = await this.likesService.getLikesByIdea({ idIdea });
       res.status(200).json(likes);
