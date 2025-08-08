@@ -55,6 +55,23 @@ class UsersService {
     }
   }
 
+  async getUserById(id) {
+    if (!id) {
+      throw new Error("ArgumentRequired");
+    }
+    try {
+      const user = await this.userRepository.getUserById(id);
+      if (!user) {
+        throw new Error("DataNotFound");
+      }
+
+      return user;
+    } catch (err) {
+      console.error(err);
+      throw new Error(err.message);
+    }
+  }
+
   async updateUserById(currentId, update) {
     if (!update || Object.keys(update).length === 0) {
       throw new Error("ArgumentRequired");

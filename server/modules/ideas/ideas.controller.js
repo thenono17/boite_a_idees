@@ -5,8 +5,10 @@ class IdeasController {
 
   async createIdea(req, res, next) {
     const { title, descr, categorie } = req.body;
+    const currentId = req.userID;
+    console.log(currentId);
+
     try {
-      const currentId = req.userID;
       const newIdeas = await this.ideasService.createIdea(currentId, {
         title,
         descr,

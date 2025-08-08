@@ -9,8 +9,8 @@ const usersRoutes = (usersController) => {
   router.post("/login", (req, res, next) =>
     usersController.logIn(req, res, next)
   );
-  router.get("/auth", authentification, (req, res) =>
-    usersController.authentificationUser(req, res)
+  router.get("/auth", authentification, (req, res, next) =>
+    usersController.getUserById(req, res, next)
   );
   router.post("/logout", (req, res) => usersController.logOut(req, res));
   router.put("/update", authentification, (req, res, next) =>

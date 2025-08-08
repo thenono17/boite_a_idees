@@ -26,9 +26,9 @@ class UsersController {
       });
       res.cookie("token", token, {
         httpOnly: true,
-        secure: process.env.ENV === "production",
-        sameSite: "Strict",
-        expires: new Date(Date.now() + 36000),
+        secure: true,
+        sameSite: "None",
+        expires: new Date(Date.now() + 3600000),
       });
       res.status(200).json({ user });
     } catch (err) {
@@ -36,8 +36,17 @@ class UsersController {
     }
   }
 
-  async authentificationUser(req, res) {
-    res.status(200).json({ message: "Authentification réussi" });
+  async getUserById(req, res, next) {
+    const id = req.userID;
+    try {
+      const user = await this.userServices.getUserById(id);
+      res.status(200).json({
+        username: user.username,
+      });
+    } catch (err) {
+      console.error(err);
+      next(err);
+    }
   }
 
   async logOut(req, res) {

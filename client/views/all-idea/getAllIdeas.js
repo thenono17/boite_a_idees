@@ -1,12 +1,13 @@
-try {
-  const res = await fetch("http://localhost:3000/ideas", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const ideas = await res.json();
-  console.log(ideas);
-} catch (err) {
-  console.error("Erreur lors du chargement des idées", err);
-}
+import getData from "../methode/getData.js";
+import updateUserLink from "../methode/authStatus.js";
+
+updateUserLink();
+
+(async () => {
+  const comments = await getData(`http://localhost:3000/ideas`);
+  if (comments) {
+    console.log(comments);
+  } else {
+    console.error("Impossible de récupérer les commentaires");
+  }
+})();

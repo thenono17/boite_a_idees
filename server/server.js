@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import express from "express";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import usersRoutes from "./modules/users/users.routes.js";
 import buildContainer from "./buildContainer.js";
 import errorHandler from "./middleware/handling.error.js";
@@ -16,6 +17,12 @@ const ideasController = container.ideasController;
 const likesController = container.likesController;
 const commentsController = container.commentsController;
 
+serveur.use(
+  cors({
+    origin: "http://127.0.0.1:5500",
+    credentials: true,
+  })
+);
 serveur.use(express.json());
 serveur.use(cookieParser());
 

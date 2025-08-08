@@ -26,25 +26,15 @@ class IdeasRepository {
       const [rows] = await this.pool.query(
         "SELECT Users.username AS username, Ideas.id AS idea_id, title, descr, categorie, updated_at FROM Users JOIN Ideas ON Users.id = Ideas.idUser "
       );
-      const grouped = {};
-
-      rows.map((row) => {
-        if (!grouped[row.username]) {
-          grouped[row.username] = {
-            username: row.username,
-            ideas: [],
-          };
-        }
-        if (row.idea_id) {
-          grouped[row.username].ideas.push({
-            idea_id: row.idea_id,
-            title: row.title,
-            descr: row.descr,
-            updatedAt: row.updated_at,
-          });
-        }
-      });
-      return grouped;
+      const ideas = rows.map((row) => ({
+        idea_id: row.idea_id,
+        title: row.title,
+        descr: row.descr,
+        categorie: row.categorie,
+        updatedAt: row.updated_at,
+        author: row.username,
+      }));
+      return ideas;
     } catch (err) {
       console.error(err.message);
       throw new Error("Erreur lors de récuperation des idées");

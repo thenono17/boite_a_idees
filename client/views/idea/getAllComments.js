@@ -1,14 +1,17 @@
+import getData from "../methode/getData.js";
+import updateUserLink from "../methode/authStatus.js";
+
+updateUserLink();
+
 const ideaId = 1;
 
-try {
-  const res = await fetch(`http://localhost:3000/ideas/${ideaId}/comments`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const comment = await res.json();
-  console.log(comment);
-} catch (err) {
-  console.error("Erreur lors du chargement des idées", err);
-}
+(async () => {
+  const comments = await getData(
+    `http://localhost:3000/ideas/${ideaId}/comments`
+  );
+  if (comments) {
+    console.log(comments);
+  } else {
+    console.error("Impossible de récupérer les commentaires");
+  }
+})();
