@@ -1,4 +1,3 @@
-import getData from "../methode/getData.js";
 import updateUserLink from "../methode/authStatus.js";
 
 updateUserLink();
@@ -6,12 +5,21 @@ updateUserLink();
 const ideaId = 1;
 
 (async () => {
-  const comments = await getData(
-    `http://localhost:3000/ideas/${ideaId}/comments`
-  );
-  if (comments) {
+  try {
+    const res = await fetch(`http://localhost:3000/ideas/${ideaId}/comments`, {
+      method: "GET",
+      credentials: "include",
+    });
+
+    if (!res.ok) {
+      const errorData = await res.json();
+      console.error("Erreur serveur :", errorData.message || res.statusText);
+      return;
+    }
+
+    const comments = await res.json();
     console.log(comments);
-  } else {
-    console.error("Impossible de récupérer les commentaires");
+  } catch (err) {
+    console.error("Erreur réseau :", err);
   }
 })();
