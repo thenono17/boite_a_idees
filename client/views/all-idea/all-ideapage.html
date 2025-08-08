@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>La boite à idées</title>
+    <script type="module" src="./getAllIdeas.js" defer></script>
+    <link rel="stylesheet" href="/client/assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="/client/node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <header>
+      <nav
+        class="navbar navbar-expand-lg bg-body-tertiary sticky-top shadow-sm"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/client/index.html">La boite à idées</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse d-flex justify-content-between"
+            id="navbarSupportedContent"
+          >
+            <div>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    href="/client/views/all-idea/all-ideapage.html"
+                    >Toutes les idées</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <a
+                    class="nav-link"
+                    id="user-link"
+                    href="/client/views/login/loginpage.html"
+                    >Se connecter</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="container py-5">
+      <h2>Toutes les idées</h2>
+      <div class="mb-4">
+        <div id="FilterButtons" class="d-flex flex-wrap gap-2">
+          <button class="btn btn-primary filter-btn" data-filter="all">
+            Tous
+          </button>
+        </div>
+      </div>
+      <div class="row justify-content-center gy-4" id="IdeasContainer">
+        <div id="CardIdea" class="col-12 col-sm-6 col-md-4 d-flex">
+          <div
+            class="bg-primary-subtle w-100 px-4 py-3 rounded d-flex flex-column justify-content-between"
+          >
+            <h6 id="TilteIdea">Titre</h6>
+            <p id="DescriptionIdea">Description</p>
+            <div
+              class="d-flex justify-content-between align-items-center mt-auto"
+            >
+              <a href="./../idea/ideapage.html" class="btn btn-primary"
+                >Voir plus</a
+              >
+              <div class="d-flex align-items-center">
+                <span id="NumberLikeIdea" class="me-1">75</span>
+                <button class="btn btn-like p-0 border-0 bg-transparent">
+                  <img
+                    src="./../../public/icon-like.svg"
+                    alt="image like"
+                    class="img-fluid"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="bg-primary-subtle text-center py-3 mt-auto">
+      <div class="container">
+        <a
+          class="text-body text-decoration-none fs-4 d-block"
+          href="/client/index.html"
+          >La boite à idées</a
+        >
+        Projet Hackathon Afec 2025 - By Angelique, Martin, Nolan & Eva.
+      </div>
+    </footer>
+  </body>
+  <script src="./../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</html>

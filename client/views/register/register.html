@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>La boite à idées</title>
+    <script type="module" src="../../users/register.js" defer></script>
+    <link rel="stylesheet" href="/client/assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="/client/node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <header>
+      <nav
+        class="navbar navbar-expand-lg bg-body-tertiary sticky-top shadow-sm"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/client/index.html">La boite à idées</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse d-flex justify-content-between"
+            id="navbarSupportedContent"
+          >
+            <div>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    href="/client/views/all-idea/all-ideapage.html"
+                    >Toutes les idées</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <a class="nav-link" href="/client/views/login/loginpage.html"
+                    >Se connecter</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container d-flex justify-content-center">
+      <div class="bg-primary-subtle w-50 px-4 py-2 my-5 rounded">
+        <h2 class="text-center">Inscription</h2>
+        <form id="FormCreateAccount">
+          <div class="mb-3 d-flex flex-direction-row flex-wrap gap-2">
+            <label for="FormControlName" class="form-label mb-0">Nom</label>
+            <input
+              type="text"
+              class="form-control"
+              name="FormControlName"
+              id="username"
+              placeholder="nom"
+              required
+            />
+
+            <label for="FormControlEmail" class="form-label mb-0">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              name="FormControlEmail"
+              id="email"
+              placeholder="nom@exemple.com"
+              required
+            />
+
+            <label for="FormControlPassword" class="form-label mb-0"
+              >Mot de passe</label
+            >
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              name="FormControlPassword"
+              aria-describedby="passwordHelpInline"
+              placeholder="Entrer votre mot de passe"
+              required
+            />
+          </div>
+          <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">S'inscrire</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <footer class="bg-primary-subtle text-center py-3 mt-auto">
+      <div class="container">
+        <a
+          class="text-body text-decoration-none fs-4 d-block"
+          href="/client/index.html"
+          >La boite à idées</a
+        >
+        Projet Hackathon Afec 2025 - By Angelique, Martin, Nolan & Eva.
+      </div>
+    </footer>
+  </body>
+  <script src="./../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</html>

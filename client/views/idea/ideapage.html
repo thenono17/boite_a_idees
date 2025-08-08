@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>La boite à idées</title>
+    <script type="module" src="./addComment.js" defer></script>
+    <script type="module" src="./getAllComments.js" defer></script>
+    <link rel="stylesheet" href="/client/assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="/client/node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <header>
+      <nav
+        class="navbar navbar-expand-lg bg-body-tertiary sticky-top shadow-sm"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/client/index.html">La boite à idées</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse d-flex justify-content-between"
+            id="navbarSupportedContent"
+          >
+            <div>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    href="/client/views/all-idea/all-ideapage.html"
+                    >Toutes les idées</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <a
+                    class="nav-link"
+                    id="user-link"
+                    href="/client/views/login/loginpage.html"
+                    >Se connecter</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="container">
+      <div class="row py-5 d-flex align-items-stretch">
+        <div class="col-md-6 d-flex flex-column">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 id="TilteIdea" class="m-0">Nom de l’idée</h2>
+            <div class="d-flex align-items-center">
+              <span id="NumberLikeIdea" class="me-1">75</span>
+              <button class="btn btn-like p-0 border-0 bg-transparent">
+                <img
+                  src="./../../public/icon-like.svg"
+                  alt="image like"
+                  style="width: 18px"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="bg-primary-subtle rounded w-100 p-4 flex-grow-1 overflow-y-auto"
+          >
+            <p id="DescriptionIdea" class="mb-0 text-break">
+              Description de l’idée. Elle sera remplie dynamiquement par
+              JavaScript en fonction des données.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6 d-flex flex-column">
+          <h2>Commentaires</h2>
+          <form class="mb-3" id="CommentForm">
+            <div class="input-group">
+              <input
+                type="text"
+                id="comment"
+                class="form-control bg-primary-subtle border-0 rounded-start"
+                placeholder="Ajoutez un commentaire..."
+                required
+              />
+              <button
+                class="btn btn-primary rounded-end"
+                name="comment"
+                type="submit"
+              >
+                Envoyer
+              </button>
+            </div>
+          </form>
+          <div
+            id="CommentsList"
+            class="d-flex flex-column gap-3 overflow-y-auto"
+            style="height: 400px"
+          >
+            <div class="bg-primary-subtle rounded p-3">Ex de com</div>
+            <div class="bg-primary-subtle rounded p-3">Ex de com</div>
+            <div class="bg-primary-subtle rounded p-3">Ex de com</div>
+            <div class="bg-primary-subtle rounded p-3">Ex de com</div>
+            <div class="bg-primary-subtle rounded p-3">Ex de com</div>
+            <div class="bg-primary-subtle rounded p-3">Ex de com</div>
+            <div class="bg-primary-subtle rounded p-3">Ex de com</div>
+            <div class="bg-primary-subtle rounded p-3">Ex de com</div>
+            <div class="bg-primary-subtle rounded p-3">Ex de com</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="bg-primary-subtle text-center py-3 mt-auto">
+      <div class="container">
+        <a
+          class="text-body text-decoration-none fs-4 d-block"
+          href="/client/index.html"
+          >La boite à idées</a
+        >
+        Projet Hackathon Afec 2025 - By Angelique, Martin, Nolan & Eva.
+      </div>
+    </footer>
+  </body>
+  <script src="./../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</html>
