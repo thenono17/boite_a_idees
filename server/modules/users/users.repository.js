@@ -11,6 +11,8 @@ class UsersRepository {
   }
 
   async register({ username, email, password }) {
+    console.log(username, email, password);
+
     try {
       const [result] = await this.pool.query(
         "INSERT INTO Users (username, email, password) VALUES (?, ?, ?)",
@@ -26,6 +28,14 @@ class UsersRepository {
       console.error(err.message);
       throw new Error("Erreur lors de la création de l'utilisateur");
     }
+  }
+
+  async getUserById(id) {
+    const [rows] = await this.pool.query(
+      "SELECT username FROM Users WHERE id = ?",
+      [id]
+    );
+    return rows[0];
   }
 
   async updateUserById({ id, update }) {

@@ -4,13 +4,13 @@ class IdeasService {
   }
 
   async createIdea(currentId, { title, descr, categorie }) {
-    if (!title || !descr || !categorie || currentId) {
+    if (!title || !descr || !categorie || !currentId) {
       throw new Error("ArgumentRequired");
     }
     if (
-      categorie !== "mobilité" &&
-      categorie !== "visuel" &&
-      categorie !== "web"
+      categorie !== "batiment" &&
+      categorie !== "rue" &&
+      categorie !== "site-web"
     ) {
       throw new Error("IncorrectData");
     }

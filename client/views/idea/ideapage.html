@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>La boite à idées</title>
+    <script type="module" src="./addComment.js" defer></script>
+    <script type="module" src="./getAllComments.js" defer></script>
     <link rel="stylesheet" href="/client/assets/css/style.css" />
     <link
       rel="stylesheet"
@@ -53,7 +55,10 @@
             <div>
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a class="nav-link" href="/client/views/login/loginpage.html"
+                  <a
+                    class="nav-link"
+                    id="user-link"
+                    href="/client/views/login/loginpage.html"
                     >Se connecter</a
                   >
                 </li>
@@ -94,6 +99,7 @@
             <div class="input-group">
               <input
                 type="text"
+                id="comment"
                 class="form-control bg-primary-subtle border-0 rounded-start"
                 placeholder="Ajoutez un commentaire..."
                 required
